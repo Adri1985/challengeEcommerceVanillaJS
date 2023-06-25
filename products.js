@@ -206,22 +206,24 @@ function listProducts(products) {
     a.className = "a"
     a.onclick = (handleLinkClick)
     let div = document.createElement("div");
-    div.className = "container";
+    div.className = "card";
+    let title = document.createElement("p");
+    title.textContent = `${producto.marca} ${producto.modelo}`
+    title.className = "card-title";
     let img = document.createElement("img");
     img.src = `./images/${producto.marca} ${producto.modelo}-img.png`;
-    div.appendChild(img);
-    let p1 = document.createElement("p");
-    p1.className = "brand";
-    p1.textContent = producto.marca;
-    div.appendChild(p1);
-    let p2 = document.createElement("p");
-    p2.className = "model";
-    p2.textContent = producto.modelo;
-    div.appendChild(p2);
-    let p3 = document.createElement("p");
-    p3.className = "price";
-    p3.textContent = `$${producto.precio}`;
-    div.appendChild(p3);
+    let cardFooter = document.createElement("div");
+    cardFooter.className = "cardFooter"
+    let price = document.createElement("p")
+    price.textContent = producto.precio / 100
+    let add = document.createElement("div")
+    add.innerHTML = '+'
+    div.appendChild(title)
+    div.appendChild(img)
+    cardFooter.appendChild(price)
+    cardFooter.appendChild(add)
+   
+    div.appendChild(cardFooter);
     a.appendChild(div)
     container.appendChild(a)
   }
